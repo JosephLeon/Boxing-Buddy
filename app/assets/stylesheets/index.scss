@@ -9,8 +9,22 @@
   text-align: center;
 }
 
-#start-btn {
+#start-scaffold {
 	display: table-cell;
 	vertical-align: middle;
 	cursor: hand;
+}
+
+#start-btn {
+	&.down {
+		background: red;
+	}
+}
+
+#start-btn:before {
+	content: "Start";
+}
+
+#start-btn.down:before {
+	content: "Stop";
 }

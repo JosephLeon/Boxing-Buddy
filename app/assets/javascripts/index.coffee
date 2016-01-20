@@ -2,6 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('#start-btn').click ->
-  console.log 'Handler for .click() called.'
-  return
+$(document).ready ->
+	# $('#start-btn').click ->
+	#   console.log 'Start button clicked.'
+	#   return
+
+	$('#start-btn').click ->
+	  $(this).toggleClass 'down'
+	  return
