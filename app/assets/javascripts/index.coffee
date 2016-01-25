@@ -12,19 +12,34 @@ $(document).ready ->
 	  $(this).toggleClass 'down'
 	  return
 
-	# Create audio element.
-	audioElement = document.createElement('audio')
-	audioElement.setAttribute 'src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3'
-	# audioElement.setAttribute 'autoplay', 'autoplay'
-	#audioElement.load()
-	$.get()
-	audioElement.addEventListener 'load', (->
-	  audioElement.play()
-	  return
-	), true
+	# # Create audio element.
+	# audioElement = document.createElement('audio')
+	# audioElement.setAttribute 'src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3'
+	# # audioElement.setAttribute 'autoplay', 'autoplay'
+	# # audioElement.load()
+	# $.get()
+	# audioElement.addEventListener 'load', (->
+	#   audioElement.play()
+	#   return
+	# ), true
+	# $('#start-btn').click ->
+	#   audioElement.play()
+	#   return
+	# $('.down').click ->
+	#   audioElement.pause()
+	#   return
+
+	oneMinuteRound = ->
+		console.log('One minute bell was sounded!')
+		setTimeout(threeMinuteRound, 1000)
+
+	threeMinuteRound = ->
+		console.log('Three minute bell sounded!')
+		setTimeout(oneMinuteRound, 3000)
+
 	$('#start-btn').click ->
-	  audioElement.play()
+	  oneMinuteRound()
 	  return
+
 	$('.down').click ->
-	  audioElement.pause()
-	  return
+	  throw new Error('Something went badly wrong!')
