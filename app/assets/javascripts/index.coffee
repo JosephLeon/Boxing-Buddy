@@ -6,36 +6,29 @@ $(document).ready ->
 
 	# Generate a number between 1 and 3.
 	randTime = Math.floor((Math.random() * 3) + 1)
-	console.log(randTime)
+	# console.log(randTime)
 
 	$('#start-btn').click ->
 	  $(this).toggleClass 'down'
 	  return
 
-	# # Create audio element.
-	# audioElement = document.createElement('audio')
-	# audioElement.setAttribute 'src', 'http://www.uscis.gov/files/nativedocuments/Track%2093.mp3'
-	# # audioElement.setAttribute 'autoplay', 'autoplay'
-	# # audioElement.load()
-	# $.get()
-	# audioElement.addEventListener 'load', (->
-	#   audioElement.play()
-	#   return
-	# ), true
-	# $('#start-btn').click ->
-	#   audioElement.play()
-	#   return
-	# $('.down').click ->
-	#   audioElement.pause()
-	#   return
+	# Add beep from http://www.soundjay.com/beep-sounds-1.html
+	# TODO - Add shout out in readme
+
+	audioElement = document.createElement('audio')
+	audioElement.setAttribute 'src', 'assets/beep-07.mp3'
+	audioElement.load()
+	$.get()
 
 	oneMinuteRound = ->
 		console.log('One minute bell was sounded!')
-		setTimeout(threeMinuteRound, 1000)
+		audioElement.play()
+		setTimeout(threeMinuteRound, 60000)
 
 	threeMinuteRound = ->
 		console.log('Three minute bell sounded!')
-		setTimeout(oneMinuteRound, 3000)
+		audioElement.play()
+		setTimeout(oneMinuteRound, 180000)
 
 	$('#start-btn').click ->
 	  oneMinuteRound()
