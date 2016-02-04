@@ -16,7 +16,7 @@
 }
 
 #start-btn {
-	&.down {
+	&.stop {
 		background: red;
 	}
 }
@@ -25,6 +25,6 @@
 	content: "Start";
 }
 
-#start-btn.down:before {
+#start-btn.stop:before {
 	content: "Stop";
 }
