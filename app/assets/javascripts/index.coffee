@@ -26,7 +26,7 @@ $(document).ready ->
 		# Throw the warning bell 10 seconds before end of round.
 		warningBellTime = time - 10000
 		# console.log(warningBellTime)
-		setTimeout(warningBell, warningBellTime)
+		warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
 		# setTimeout(FUNCTION, time)
 
@@ -52,7 +52,7 @@ $(document).ready ->
 
 	  timer(15000) if $(this).hasClass("stop")
 
-	  console.log('down was clicked') if $(this).hasClass("down")
+	  console.log('down was clicked') if $(this).hasClass("start")
 
 	  return
 
