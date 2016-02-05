@@ -15,70 +15,60 @@ $(document).ready ->
 	audioElement.load()
 
 	warningBell = ->
-		console.log('warningBell function called')
+		console.log('warningBell function called.')
 		audioWarningElement.play()
 
-	timer = (time) ->
-		console.log('timer function called.')
-		# console.log(time)
-		audioElement.play()
+	timer = (time, type) ->
+		# Types: regular, random
+		if type == 'regular'
+			if time == 15000
+				console.log 'long round'
+				
+				audioElement.play()
 
-		# Throw the warning bell 10 seconds before end of round.
-		warningBellTime = time - 10000
-		# console.log(warningBellTime)
-		warningBellTimeout = setTimeout(warningBell, warningBellTime)
+				# Throw the warning bell 10 seconds before end of round.
+				warningBellTime = time - 10000
+				# console.log(warningBellTime)
+				warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
-		# setTimeout(FUNCTION, time)
+				setTimeout(timer.bind(this, 20000, 'regular'), 20000)
+			else
+				console.log 'short round'
 
-	oneMinuteRound = ->
-		console.log('One minute bell was sounded!')
-		audioElement.play()
-		oneMinuteTimer = setTimeout(threeMinuteRound, 60000)
-		# For testing.
-		# oneMinuteTimer = setTimeout(threeMinuteRound, 3000)
+				audioElement.play()
 
-	threeMinuteRound = ->
-		console.log('Three minute bell sounded!')
-		audioElement.play()
-		threeMinuteTimer = setTimeout(oneMinuteRound, 180000)
-		# For testing.
-		# threeMinuteTimer = setTimeout(oneMinuteRound, 6000)
+				# Throw the warning bell 10 seconds before end of round.
+				warningBellTime = time - 10000
+				# console.log(warningBellTime)
+				warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
+				setTimeout(timer.bind(this, 15000, 'regular'), 15000)
+		else
+			console.log 'type is random interval.'
 
 
 	# Start timer click function
 	$('#start-btn').click ->
 	  $(this).toggleClass 'start stop'
 
-	  timer(15000) if $(this).hasClass("stop")
+	  timer(20000, 'regular') if $(this).hasClass("stop")
 
 	  console.log('down was clicked') if $(this).hasClass("start")
+	  # clearTimeout(oneMinuteTimer) if $(this).hasClass("down")
 
 	  return
 
-	  # timer(15000) if $(this).hasClass("start")
+	# oneMinuteRound = ->
+	# 	console.log('One minute bell was sounded!')
+	# 	audioElement.play()
+	# 	oneMinuteTimer = setTimeout(threeMinuteRound, 60000)
+	# 	# For testing.
+	# 	# oneMinuteTimer = setTimeout(threeMinuteRound, 3000)
 
-	  # clearTimeout(oneMinuteTimer) if $(this).hasClass("down")
-	  # console.log('down was clicked') if $(this).hasClass("down")
-
-
-	# $('.down').click ->
-	#   $(this).toggleClass 'start'
-	#   return
-
-  
-  # 	# clearTimeout(oneMinuteTimer)
-  # 	# clearTimeout(threeMinuteTimer)
-  #   # throw new Error('Something went badly wrong!')
-# $('.start').click ->
-#   console.log('class click working')
-#   # $('.start').addClass 'down'
-#   # $('.down').removeClass 'start'
-#   timer(15000)
-#   return
-
-
-# $('.down').click ->
-#   console.log 'class down pressed'
-#   # $('.down').addClass 'start'
-#   # $('.start').removeClass 'down'
+	# threeMinuteRound = ->
+	# 	console.log('Three minute bell sounded!')
+	# 	audioElement.play()
+	# 	threeMinuteTimer = setTimeout(oneMinuteRound, 180000)
+	# 	# For testing.
+	# 	# threeMinuteTimer = setTimeout(oneMinuteRound, 6000)
+	  
