@@ -69,6 +69,10 @@ $(document).ready ->
 
 	  return
 
+	$('.rhythm-type-btn').click ->
+		$('.rhythm-type-btn').removeClass('active')
+		$(this).addClass('active')
+
 	# oneMinuteRound = ->
 	# 	console.log('One minute bell was sounded!')
 	# 	audioElement.play()
