@@ -28,9 +28,9 @@ $(document).ready ->
 				audioElement.play()
 
 				# Throw the warning bell 10 seconds before end of round.
-				# warningBellTime = time - 10000
-				# console.log warningBellTime
-				# warningBellTimeout = setTimeout(warningBell, warningBellTime)
+				warningBellTime = 170000
+				console.log warningBellTime
+				warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
 				setTimeout(timer.bind(this, 180000, 'regular'), 180000)
 				# setTimeout(timer.bind(this, 20000, 'regular'), 20000)
@@ -39,9 +39,9 @@ $(document).ready ->
 				audioElement.play()
 
 				# Throw the warning bell 10 seconds before end of round.
-				# warningBellTime = time - 10000
-				# console.log(warningBellTime)
-				# warningBellTimeout = setTimeout(warningBell, warningBellTime)
+				warningBellTime = 50000
+				console.log(warningBellTime)
+				warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
 				setTimeout(timer.bind(this, 60000, 'regular'), 60000)
 				# setTimeout(timer.bind(this, 15000, 'regular'), 15000)
