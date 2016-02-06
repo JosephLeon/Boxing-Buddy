@@ -50,7 +50,7 @@ $(document).ready ->
 
 			# Throw the warning bell 10 seconds before end of round.
 			warningBellTime = time - 10000
-			# console.log(warningBellTime)
+			console.log(warningBellTime)
 			warningBellTimeout = setTimeout(warningBell, warningBellTime)
 
 			setTimeout(timer.bind(this, randTime, 'random'), randTime)
@@ -60,9 +60,14 @@ $(document).ready ->
 	$('#start-btn').click ->
 	  $(this).toggleClass 'start stop'
 
-	  timer(60000, 'regular') if $(this).hasClass("stop")
-	  # timer(15000, 'regular') if $(this).hasClass("stop")
-	  # timer(randTime, 'random') if $(this).hasClass("stop")
+	  if $('#regular-btn').hasClass 'active'
+	  	console.log '#regular-btn has class active'
+	  	timer(60000, 'regular') if $(this).hasClass("stop")
+	  
+
+	  if $('#random-btn').hasClass 'active'
+	  	console.log '#random-btn has class active'
+	  	timer(randTime, 'random') if $(this).hasClass("stop")
 
 	  console.log('down was clicked') if $(this).hasClass("start")
 	  # clearTimeout(oneMinuteTimer) if $(this).hasClass("down")
@@ -72,6 +77,11 @@ $(document).ready ->
 	$('.rhythm-type-btn').click ->
 		$('.rhythm-type-btn').removeClass('active')
 		$(this).addClass('active')
+
+	$('#regular-btn').click ->
+
+
+	$('#random-btn').click ->
 
 	# oneMinuteRound = ->
 	# 	console.log('One minute bell was sounded!')
