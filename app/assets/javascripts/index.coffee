@@ -18,6 +18,13 @@ $(document).ready ->
 		console.log('warningBell function called.')
 		audioWarningElement.play()
 
+	# FatalError = ->
+	#   Error.apply this, arguments
+	#   @name = 'FatalError'
+	#   return
+
+	# FatalError.prototype = Object.create(Error.prototype)
+
 	timer = (time, type) ->
 		randTime = (Math.floor((Math.random() * 3) + 1)) * 10000
 		# Types: regular, random
@@ -69,8 +76,9 @@ $(document).ready ->
 	  	console.log '#random-btn has class active'
 	  	timer(randTime, 'random') if $(this).hasClass("stop")
 
+	  # Stop the timer when stop is clicked
 	  console.log('down was clicked') if $(this).hasClass("start")
-	  # clearTimeout(oneMinuteTimer) if $(this).hasClass("down")
+	  # throw new FatalError('Something went badly wrong!') if $(this).hasClass("start")
 
 	  return
 
@@ -78,10 +86,10 @@ $(document).ready ->
 		$('.rhythm-type-btn').removeClass('active')
 		$(this).addClass('active')
 
-	$('#regular-btn').click ->
+	# $('#regular-btn').click ->
 
 
-	$('#random-btn').click ->
+	# $('#random-btn').click ->
 
 	# oneMinuteRound = ->
 	# 	console.log('One minute bell was sounded!')
